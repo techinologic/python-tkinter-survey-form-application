@@ -16,15 +16,16 @@ class Feedback:
         self.style.configure('Header.TLabel', font=('Arial', 18, 'bold'))
 
         self.frame_header = ttk.Frame(master)
-        self.frame_header.pack()
+        self.frame_header.pack()  # best geometry manager for frames is pack()
 
         self.logo = PhotoImage(file='python.gif').subsample(2, 2)
         ttk.Label(self.frame_header, image=self.logo).grid(row=0, column=0, rowspan=2)
         ttk.Label(self.frame_header, text='Thanks for Exploring!', style='Header.TLabel').grid(row=0, column=1)
-        ttk.Label(self.frame_header, wraplength=300, text=("We're glad you chose Pao "
-                                                           "& Zen for your travel needs! "
-                                                           "Your feedback is highly appreciated.")).grid(row=1,
-                                                                                                         column=1)
+        ttk.Label(self.frame_header, wraplength=300,
+                  text=("We're glad you chose Pao "
+                        "& Zen for your travel needs! "
+                        "Your feedback is highly appreciated.")).grid(row=1,
+                                                                      column=1)
 
         self.frame_content = ttk.Frame(master)
         self.frame_content.pack()
@@ -47,14 +48,14 @@ class Feedback:
     def submit(self):
 
         if (self.entry_name.get() == ''):
-            messagebox.showinfo(title="Eplore Baltimore Feedback", message="Please enter name.")
+            messagebox.showinfo(title="Eplore Baltimore Feedback", message="Please enter your name.")
         else:
             print('Name: {}'.format(self.entry_name.get()))
             print('Email: {}'.format(self.entry_email.get()))
             print('Comments: {}'.format(self.text_comments.get(1.0, 'end')))
 
             self.clear()
-            messagebox.showinfo(title="Eplore Baltimore Feedback", message="Comments Submitted!")
+            messagebox.showinfo(title="Explore Baltimore Feedback", message="Comments Submitted!")
 
     def clear(self):
         self.entry_name.delete(0, 'end')
